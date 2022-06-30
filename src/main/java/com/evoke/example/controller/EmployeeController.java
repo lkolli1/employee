@@ -28,10 +28,14 @@ public class EmployeeController {
     public List<EmployeeDTO> findAll() {
         return empService.findAll();
     }
-    @GetMapping("/employee/{id}")
-    public EmployeeDTO findById(@PathVariable Integer id) {
+    @RequestMapping(value="/employee/{id}", method=RequestMethod.GET)
+    @ResponseBody
+    public EmployeeDTO findById(@PathVariable(value="id") Integer id) {
         return empService.findById(id);
     }
+    @RequestMapping(value="/employees/{name}",method=RequestMethod.GET)
+    @ResponseBody
+    public EmployeeDTO findByName(@PathVariable(value="name") String name){return empService.finByName(name);}
     @PutMapping("/employee")
     public ResponseEntity<String> updateEmp(@RequestBody EmployeeDTO empDto) {
         HttpHeaders resHeaders = new HttpHeaders();

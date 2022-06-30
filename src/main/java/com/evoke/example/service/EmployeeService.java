@@ -49,6 +49,12 @@ public class EmployeeService {
         return empDTO;
 
     }
+    public EmployeeDTO finByName(String name){
+        Employee employee = empRepo.findByName(name);
+        EmployeeDTO empDTO = new EmployeeDTO();
+        empDTO = setDTOMethod(employee, empDTO);
+        return empDTO;
+    }
 
     public Employee updateEmp(EmployeeDTO empDTO) {
         int k = empDTO.getId();
