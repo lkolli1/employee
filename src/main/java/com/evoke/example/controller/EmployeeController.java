@@ -32,6 +32,8 @@ public class EmployeeController {
     public EmployeeDTO findById(@PathVariable Integer id) {
         return empService.findById(id);
     }
+    @GetMapping("/employee/{name}")
+    public EmployeeDTO findByName(@PathVariable String name){return empService.finByName(name);}
     @PutMapping("/employee")
     public ResponseEntity<String> updateEmp(@RequestBody EmployeeDTO empDto) {
         HttpHeaders resHeaders = new HttpHeaders();
